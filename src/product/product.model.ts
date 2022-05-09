@@ -1,5 +1,5 @@
 export class ProductModel {
-  image: string;
+  image: string[];
   title: string;
   price: number;
   oldPrice: number;
