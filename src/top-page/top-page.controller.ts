@@ -9,19 +9,21 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { FindTopPageDto } from './dto/find-top-page.dto';
 import { TopPageModel } from './top-page.model';
 
 @Controller('top-page')
 export class TopPageController {
+  constructor(private readonly configService: ConfigService) {}
   @Post('create')
   async create(@Body() dto: Omit<TopPageModel, '_id'>): Promise<any> {
     return 'This action adds a new product' + dto;
   }
 
-  @Get(':id')
-  async get(@Param('id') id: string): Promise<any> {
-    return 'This action returns a single product' + id;
+  @Get('get/:alias')
+  async get(@Param('alias') alias: string): Promise<any> {
+    return this.configService.get('TEST');
   }
 
   @Put(':id')
