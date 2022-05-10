@@ -23,6 +23,7 @@ export class TopPageController {
 
   @Get('get/:alias')
   async get(@Param('alias') alias: string): Promise<any> {
+    return 'This action returns one products' + alias;
     return this.configService.get('TEST');
   }
 
